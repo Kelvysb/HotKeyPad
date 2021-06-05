@@ -16,6 +16,7 @@ const int ACK = 65;
 const int READ = 82;
 const int SET = 83;
 const int CLEAR = 67;
+const int VIB = A1;
 int holdKey = 0;
 
 void setup() { 
@@ -56,13 +57,15 @@ void loop() {
     Serial.println(currentKey);
     Keyboard.begin();
     execCommand(currentKey-1);
-    delay(200);
+    analogWrite(VIB, 512);
+    delay(100);
+    analogWrite(VIB, 0);
   } else if(currentKey == 0 && holdKey != 0)
   {    
     Keyboard.releaseAll();   
     Keyboard.end();
     Serial.print("U:");
-    Serial.println(holdKey);   
+    Serial.println(holdKey);    
     holdKey = 0;
   }
 }

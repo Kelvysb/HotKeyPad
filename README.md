@@ -1,8 +1,17 @@
+![Logo](./graphics/icon.png)
+
 # HotKeyPad
 
 Arduino based hot keys programmable mini keyboard.
 
 Arduino **Mega32U4** based.
+
+# Base Circuit
+
+![Logo](./graphics/BaseCircuit.png)
+
+* Vibration cell optional.
+* Keyboard can be of any kind, only need to update '*readButton*' method on Arduino code (*\Arduino\HotKeyPad\HotKeyPad.ino*)
 
 # Serial commands
 * Ack 
@@ -18,20 +27,20 @@ Arduino **Mega32U4** based.
 # Command format
 
 ```
-<mode><hold time><wait time><return><ctrl><alt><shift><win>[<key list>]
+<mode><hold time><delay time><ctrl><alt><shift><gui>[<key list>]
 ```
 * mode:
-    * 0 = hold (press all keys)
-    * 1 = sequence (press keys in sequence)
+    * 48 = hold (press all keys)
+    * 49 = sequence (press keys in sequence)
 * hold time:
     * Time holding the key, (t * 100)ms (modifiers not included) 
     * only on sequence mode
 * delay time:
     * Time between the keys, (t * 100)ms (modifiers not included) 
     * only on sequence mode
-* crtl, alt, shift, and win (modifiers)
-    * 0 = not pressed
-    * 1 = pressed
+* crtl, alt, shift, and gui (modifiers)
+    * 48 = not pressed
+    * 49 = pressed
 * key list
     * Key sequence (ASCII code)
     * In hold mode pressed all at the same time, and released when the button it's released.
@@ -88,3 +97,28 @@ Arduino **Mega32U4** based.
 |KEY_F22|0xF9|249|
 |KEY_F23|0xFA|250|
 |KEY_F24|0xFB|251|
+
+# Program
+
+![Logo](./graphics/Program.png)
+
+1. This field indicates the connected device and the port;
+2. Presets:
+    * Here you can save presets, when a preset it's applied, the memory of the device it's cleared and all the commands of the preset it's loaded to the device;
+3. The buttons of the device, you can select they to alter it's configurations;
+4. Button configuration you can set what a button will do here:
+    * Mode:
+        - hold, all buttons will be pressed at the same time;
+        - sequence, the button will be pressed in sequence following the configured 'hold time' and 'delay time' (time to wait before press the next button);
+    * Modifiers: 
+        - Control, alt, Shift, and Gui (win key on windows);
+    * Command:
+        - Just press a key to set, and use backspace to remove a key
+        - To add a especial key/command use the list bellow.
+    * Save: 
+        - Remember to save to record the command on the device.
+5. Controls:
+    * Clear Device:
+        - Clear device memory;
+        - Reload commands from the connected device;
+        - Minimize to tray;

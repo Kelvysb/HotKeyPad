@@ -70,12 +70,22 @@ namespace HotKeyPad
             this.BtnMinimize = new System.Windows.Forms.Button();
             this.TrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.BtnClearDevice = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.TxtPresetName = new System.Windows.Forms.TextBox();
+            this.BtnSavePreset = new System.Windows.Forms.Button();
+            this.BtnDeletePreset = new System.Windows.Forms.Button();
+            this.BtnApplyPreset = new System.Windows.Forms.Button();
+            this.CmbPresets = new System.Windows.Forms.ComboBox();
+            this.BtnReload = new System.Windows.Forms.Button();
+            this.LnkAbout = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumDelayTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumHoldTime)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -110,10 +120,10 @@ namespace HotKeyPad
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 27);
+            this.groupBox1.Location = new System.Drawing.Point(12, 91);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(207, 291);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buttons";
             // 
@@ -272,10 +282,10 @@ namespace HotKeyPad
             this.groupBox2.Controls.Add(this.LblSelectedButton);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Location = new System.Drawing.Point(225, 27);
+            this.groupBox2.Location = new System.Drawing.Point(225, 91);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(338, 291);
-            this.groupBox2.TabIndex = 13;
+            this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Command";
             // 
@@ -500,7 +510,7 @@ namespace HotKeyPad
             // BtnMinimize
             // 
             this.BtnMinimize.BackColor = System.Drawing.Color.White;
-            this.BtnMinimize.Location = new System.Drawing.Point(491, 324);
+            this.BtnMinimize.Location = new System.Drawing.Point(490, 388);
             this.BtnMinimize.Name = "BtnMinimize";
             this.BtnMinimize.Size = new System.Drawing.Size(72, 25);
             this.BtnMinimize.TabIndex = 26;
@@ -518,20 +528,119 @@ namespace HotKeyPad
             // BtnClearDevice
             // 
             this.BtnClearDevice.BackColor = System.Drawing.Color.White;
-            this.BtnClearDevice.Location = new System.Drawing.Point(404, 324);
+            this.BtnClearDevice.Location = new System.Drawing.Point(327, 388);
             this.BtnClearDevice.Name = "BtnClearDevice";
             this.BtnClearDevice.Size = new System.Drawing.Size(81, 25);
-            this.BtnClearDevice.TabIndex = 27;
+            this.BtnClearDevice.TabIndex = 28;
             this.BtnClearDevice.Text = "Clear Device";
             this.BtnClearDevice.UseVisualStyleBackColor = false;
             this.BtnClearDevice.Click += new System.EventHandler(this.BtnClearDevice_Click);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label8);
+            this.groupBox5.Controls.Add(this.TxtPresetName);
+            this.groupBox5.Controls.Add(this.BtnSavePreset);
+            this.groupBox5.Controls.Add(this.BtnDeletePreset);
+            this.groupBox5.Controls.Add(this.BtnApplyPreset);
+            this.groupBox5.Controls.Add(this.CmbPresets);
+            this.groupBox5.Location = new System.Drawing.Point(12, 27);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(551, 58);
+            this.groupBox5.TabIndex = 0;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Presets";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(274, 26);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(42, 15);
+            this.label8.TabIndex = 32;
+            this.label8.Text = "Name:";
+            // 
+            // TxtPresetName
+            // 
+            this.TxtPresetName.Location = new System.Drawing.Point(321, 22);
+            this.TxtPresetName.Name = "TxtPresetName";
+            this.TxtPresetName.Size = new System.Drawing.Size(153, 23);
+            this.TxtPresetName.TabIndex = 4;
+            // 
+            // BtnSavePreset
+            // 
+            this.BtnSavePreset.BackColor = System.Drawing.Color.White;
+            this.BtnSavePreset.Location = new System.Drawing.Point(479, 21);
+            this.BtnSavePreset.Name = "BtnSavePreset";
+            this.BtnSavePreset.Size = new System.Drawing.Size(55, 25);
+            this.BtnSavePreset.TabIndex = 5;
+            this.BtnSavePreset.Text = "Save";
+            this.BtnSavePreset.UseVisualStyleBackColor = false;
+            this.BtnSavePreset.Click += new System.EventHandler(this.BtnSavePreset_Click);
+            // 
+            // BtnDeletePreset
+            // 
+            this.BtnDeletePreset.BackColor = System.Drawing.Color.White;
+            this.BtnDeletePreset.Location = new System.Drawing.Point(213, 21);
+            this.BtnDeletePreset.Name = "BtnDeletePreset";
+            this.BtnDeletePreset.Size = new System.Drawing.Size(55, 25);
+            this.BtnDeletePreset.TabIndex = 3;
+            this.BtnDeletePreset.Text = "Delete";
+            this.BtnDeletePreset.UseVisualStyleBackColor = false;
+            this.BtnDeletePreset.Click += new System.EventHandler(this.BtnDeletePreset_Click);
+            // 
+            // BtnApplyPreset
+            // 
+            this.BtnApplyPreset.BackColor = System.Drawing.Color.White;
+            this.BtnApplyPreset.Location = new System.Drawing.Point(152, 21);
+            this.BtnApplyPreset.Name = "BtnApplyPreset";
+            this.BtnApplyPreset.Size = new System.Drawing.Size(55, 25);
+            this.BtnApplyPreset.TabIndex = 2;
+            this.BtnApplyPreset.Text = "Apply";
+            this.BtnApplyPreset.UseVisualStyleBackColor = false;
+            this.BtnApplyPreset.Click += new System.EventHandler(this.BtnApplyPreset_Click);
+            // 
+            // CmbPresets
+            // 
+            this.CmbPresets.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbPresets.FormattingEnabled = true;
+            this.CmbPresets.Location = new System.Drawing.Point(11, 22);
+            this.CmbPresets.Name = "CmbPresets";
+            this.CmbPresets.Size = new System.Drawing.Size(135, 23);
+            this.CmbPresets.TabIndex = 1;
+            this.CmbPresets.SelectedIndexChanged += new System.EventHandler(this.CmbPresets_SelectedIndexChanged);
+            // 
+            // BtnReload
+            // 
+            this.BtnReload.BackColor = System.Drawing.Color.White;
+            this.BtnReload.Location = new System.Drawing.Point(414, 388);
+            this.BtnReload.Name = "BtnReload";
+            this.BtnReload.Size = new System.Drawing.Size(72, 25);
+            this.BtnReload.TabIndex = 27;
+            this.BtnReload.Text = "Reload";
+            this.BtnReload.UseVisualStyleBackColor = false;
+            this.BtnReload.Click += new System.EventHandler(this.BtnReload_Click);
+            // 
+            // LnkAbout
+            // 
+            this.LnkAbout.AutoSize = true;
+            this.LnkAbout.Location = new System.Drawing.Point(522, 9);
+            this.LnkAbout.Name = "LnkAbout";
+            this.LnkAbout.Size = new System.Drawing.Size(40, 15);
+            this.LnkAbout.TabIndex = 29;
+            this.LnkAbout.TabStop = true;
+            this.LnkAbout.Text = "About";
+            this.LnkAbout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkAbout_LinkClicked);
             // 
             // HotKeyPad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(574, 354);
+            this.ClientSize = new System.Drawing.Size(574, 420);
+            this.Controls.Add(this.LnkAbout);
+            this.Controls.Add(this.BtnReload);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.BtnClearDevice);
             this.Controls.Add(this.BtnMinimize);
             this.Controls.Add(this.groupBox2);
@@ -543,6 +652,7 @@ namespace HotKeyPad
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "HotKeyPad";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HotKeypad";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HotKeyPad_FormClosing);
             this.Load += new System.EventHandler(this.HotKeyPad_Load);
@@ -555,6 +665,8 @@ namespace HotKeyPad
             ((System.ComponentModel.ISupportInitialize)(this.NumHoldTime)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -601,6 +713,15 @@ namespace HotKeyPad
         private System.Windows.Forms.Button BtnMinimize;
         private System.Windows.Forms.NotifyIcon TrayIcon;
         private System.Windows.Forms.Button BtnClearDevice;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox TxtPresetName;
+        private System.Windows.Forms.Button BtnSavePreset;
+        private System.Windows.Forms.Button BtnDeletePreset;
+        private System.Windows.Forms.Button BtnApplyPreset;
+        private System.Windows.Forms.ComboBox CmbPresets;
+        private System.Windows.Forms.Button BtnReload;
+        private System.Windows.Forms.LinkLabel LnkAbout;
     }
 }
 

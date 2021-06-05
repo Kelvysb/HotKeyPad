@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
+using System.Text.Json;
 using System.Threading;
 
 namespace HotKeyPad
@@ -10,7 +13,16 @@ namespace HotKeyPad
         private const int BLOCK_SIZE = 85;
         private const int TIMEOUT = 5000;
 
+        private string PresetFolder = Path.Join(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "HotKeyPad");
         private SerialPort _serialPort;
+
+        public HotKeyPadService()
+        {
+            if (!Directory.Exists(PresetFolder))
+            {
+                Directory.CreateDirectory(PresetFolder);
+            }
+        }
 
         public string LastDataReceived { get; set; }
 
@@ -128,6 +140,42 @@ namespace HotKeyPad
             _serialPort.WriteLine("C\n");
             var result = WaitResponse();
             return result.StartsWith("OK");
+        }
+
+        public List<Preset> LoadPresets()
+        {
+            var result = new List<Preset>();
+            var files = Directory.GetFiles(PresetFolder);
+            foreach (var fileName in files)
+            {
+                using (var file = File.OpenText(fileName))
+                {
+                    try
+                    {
+                        result.Add(JsonSerializer.Deserialize<Preset>(file.ReadToEnd()));
+                    }
+                    finally
+                    {
+                        file.Close();
+                    }
+                }
+            }
+            return result;
+        }
+
+        public void SavePereset(Preset preset)
+        {
+            var fileName = Path.Join(PresetFolder, $"{preset.Name}.json");
+            File.WriteAllText(fileName, JsonSerializer.Serialize(preset));
+        }
+
+        public void DeletePereset(string presetName)
+        {
+            var fileName = Path.Join(PresetFolder, $"{presetName}.json");
+            if (File.Exists(fileName))
+            {
+                File.Delete(fileName);
+            }
         }
 
         private string WaitResponse()
