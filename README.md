@@ -1,4 +1,4 @@
-![Logo](./graphics/icon.png)
+![Logo](./docs/icon.png)
 
 # HotKeyPad
 
@@ -8,7 +8,7 @@ Arduino **Mega32U4** based.
 
 # Base Circuit
 
-![Logo](./graphics/BaseCircuit.png)
+![Logo](./docs/BaseCircuit.png)
 
 * Vibration cell optional.
 * Keyboard can be of any kind, only need to update '*readButton*' method on Arduino code (*\Arduino\HotKeyPad\HotKeyPad.ino*)
@@ -100,7 +100,7 @@ Arduino **Mega32U4** based.
 
 # Program
 
-![Logo](./graphics/Program.png)
+![Logo](./docs/Program.png)
 
 1. This field indicates the connected device and the port;
 2. Presets:
