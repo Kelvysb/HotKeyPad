@@ -12,7 +12,7 @@ namespace HotKeyPad
         private HotKeyPadService service;
         private List<Command> commands = new List<Command>();
         private List<Preset> presets = new List<Preset>();
-        private Dictionary<string, char> especialKeys;
+        private Dictionary<string, byte> especialKeys;
         private Command selectedButton = null;
         private Preset selectedPreset = null;
 
@@ -223,55 +223,55 @@ namespace HotKeyPad
 
         private void InitializeEspecialKeys()
         {
-            especialKeys = new Dictionary<string, char>
+            especialKeys = new Dictionary<string, byte>
             {
-                { "LEFT CTRL", (char)128 },
-                { "LEFT SHIFT", (char)129 },
-                { "LEFT ALT", (char)130 },
-                { "LEFT GUI", (char)131 },
-                { "RIGHT CTRL", (char)132 },
-                { "RIGHT SHIFT", (char)133 },
-                { "RIGHT ALT", (char)134 },
-                { "RIGHT GUI", (char)135 },
-                { "UP ARROW", (char)218 },
-                { "DOWN ARROW", (char)217 },
-                { "LEFT ARROW", (char)216 },
-                { "RIGHT ARROW", (char)215 },
-                { "BACKSPACE", (char)178 },
-                { "TAB", (char)179 },
-                { "RETURN", (char)176 },
-                { "ESC", (char)177 },
-                { "INSERT", (char)209 },
-                { "DELETE", (char)212 },
-                { "PAGE UP", (char)211 },
-                { "PAGE DOWN", (char)214 },
-                { "HOME", (char)210 },
-                { "END", (char)213 },
-                { "CAPS LOCK", (char)193 },
-                { "F1", (char)194 },
-                { "F2", (char)195 },
-                { "F3", (char)196 },
-                { "F4", (char)197 },
-                { "F5", (char)198 },
-                { "F6", (char)199 },
-                { "F7", (char)200 },
-                { "F8", (char)201 },
-                { "F9", (char)202 },
-                { "F10", (char)203 },
-                { "F11", (char)204 },
-                { "F12", (char)205 },
-                { "F13", (char)240 },
-                { "F14", (char)241 },
-                { "F15", (char)242 },
-                { "F16", (char)243 },
-                { "F17", (char)244 },
-                { "F18", (char)245 },
-                { "F19", (char)246 },
-                { "F20", (char)247 },
-                { "F21", (char)248 },
-                { "F22", (char)249 },
-                { "F23", (char)250 },
-                { "F24", (char)251 }
+                { "LEFT CTRL", 128 },
+                { "LEFT SHIFT", 129 },
+                { "LEFT ALT", 130 },
+                { "LEFT GUI", 131 },
+                { "RIGHT CTRL", 132 },
+                { "RIGHT SHIFT", 133 },
+                { "RIGHT ALT", 134 },
+                { "RIGHT GUI", 135 },
+                { "UP ARROW", 218 },
+                { "DOWN ARROW", 217 },
+                { "LEFT ARROW", 216 },
+                { "RIGHT ARROW", 215 },
+                { "BACKSPACE", 178 },
+                { "TAB", 179 },
+                { "RETURN", 176 },
+                { "ESC", 177 },
+                { "INSERT", 209 },
+                { "DELETE", 212 },
+                { "PAGE UP", 211 },
+                { "PAGE DOWN", 214 },
+                { "HOME", 210 },
+                { "END", 213 },
+                { "CAPS LOCK", 193 },
+                { "F1", 194 },
+                { "F2", 195 },
+                { "F3", 196 },
+                { "F4", 197 },
+                { "F5", 198 },
+                { "F6", 199 },
+                { "F7", 200 },
+                { "F8", 201 },
+                { "F9", 202 },
+                { "F10", 203 },
+                { "F11", 204 },
+                { "F12", 205 },
+                { "F13", 240 },
+                { "F14", 241 },
+                { "F15", 242 },
+                { "F16", 243 },
+                { "F17", 244 },
+                { "F18", 245 },
+                { "F19", 246 },
+                { "F20", 247 },
+                { "F21", 248 },
+                { "F22", 249 },
+                { "F23", 250 },
+                { "F24", 251 }
             };
             CmbEspecial.Items.Clear();
             CmbEspecial.Items.AddRange(especialKeys.Keys.ToArray());
@@ -356,8 +356,8 @@ namespace HotKeyPad
                 selectedButton = commands[button - 1];
                 LblSelectedButton.Text = (selectedButton.Position + 1).ToString();
                 RadHold.Checked = selectedButton.Mode == CommandMode.Hold;
-                NumHoldTime.Value = int.Parse(selectedButton.HoldTime.ToString());
-                NumDelayTime.Value = int.Parse(selectedButton.DelayTime.ToString());
+                NumHoldTime.Value = selectedButton.HoldTime - 48;
+                NumDelayTime.Value = selectedButton.DelayTime - 48;
                 ChkCtrl.Checked = selectedButton.Ctrl;
                 ChkAlt.Checked = selectedButton.Alt;
                 chkShift.Checked = selectedButton.Shift;
@@ -369,8 +369,8 @@ namespace HotKeyPad
         private void SaveCommand()
         {
             selectedButton.Mode = RadHold.Checked ? CommandMode.Hold : CommandMode.Sequence;
-            selectedButton.HoldTime = (char)(NumHoldTime.Value + 48);
-            selectedButton.DelayTime = (char)(NumDelayTime.Value + 48);
+            selectedButton.HoldTime = (byte)(NumHoldTime.Value + 48);
+            selectedButton.DelayTime = (byte)(NumDelayTime.Value + 48);
             selectedButton.Ctrl = ChkCtrl.Checked;
             selectedButton.Alt = ChkAlt.Checked;
             selectedButton.Shift = chkShift.Checked;
@@ -430,7 +430,7 @@ namespace HotKeyPad
         {
             if (selectedIndex != -1)
             {
-                selectedButton.Keys[selectedButton.Keys.IndexOf('\0')] = especialKeys[CmbEspecial.SelectedItem.ToString()];
+                selectedButton.Keys[selectedButton.Keys.IndexOf(0)] = especialKeys[CmbEspecial.SelectedItem.ToString()];
                 CmbEspecial.SelectedIndex = -1;
                 UpdateCommand();
                 TxtCommand.Focus();
@@ -441,11 +441,11 @@ namespace HotKeyPad
         {
             if (keyChar != 0 && !char.IsControl(keyChar))
             {
-                selectedButton.Keys[selectedButton.Keys.IndexOf('\0')] = keyChar;
+                selectedButton.Keys[selectedButton.Keys.IndexOf(0)] = (byte)keyChar;
             }
-            else if ((keyChar == 127 || keyChar == 8) && selectedButton.Keys.IndexOf('\0') - 1 >= 0)
+            else if ((keyChar == 127 || keyChar == 8) && selectedButton.Keys.IndexOf(0) - 1 >= 0)
             {
-                selectedButton.Keys[selectedButton.Keys.IndexOf('\0') - 1] = '\0';
+                selectedButton.Keys[selectedButton.Keys.IndexOf(0) - 1] = 0;
             }
             UpdateCommand();
         }
@@ -458,7 +458,7 @@ namespace HotKeyPad
                         .Select(k =>
                             especialKeys.Values.Contains(k)
                             ? $"<{especialKeys.First(v => v.Value == k).Key}>"
-                            : k.ToString()));
+                            : ((char)k).ToString()));
             TxtCommand.Text = !string.IsNullOrEmpty(value) ? $"'{value}'" : string.Empty;
         }
 

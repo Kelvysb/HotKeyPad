@@ -8,9 +8,9 @@ namespace HotKeyPad
 
         public CommandMode Mode { get; set; }
 
-        public char HoldTime { get; set; }
+        public byte HoldTime { get; set; }
 
-        public char DelayTime { get; set; }
+        public byte DelayTime { get; set; }
 
         public bool Ctrl { get; set; }
 
@@ -20,6 +20,6 @@ namespace HotKeyPad
 
         public bool Gui { get; set; }
 
-        public List<char> Keys { get; set; }
+        public List<byte> Keys { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
+using System.Text;
 using System.Text.Json;
 using System.Threading;
 
@@ -44,7 +45,7 @@ namespace HotKeyPad
                     _serialPort.Open();
                     _serialPort.DiscardInBuffer();
                     _serialPort.WriteLine("A\n");
-                    var result = WaitResponse();
+                    var result = Encoding.ASCII.GetString(WaitResponse().ToArray());
                     if (!string.IsNullOrEmpty(result) && result.StartsWith("HOTKEYPAD"))
                     {
                         return $"{result.Replace("\r\n", "")} on {_serialPort.PortName}";
@@ -90,7 +91,7 @@ namespace HotKeyPad
             _serialPort.DiscardInBuffer();
             _serialPort.Write(buffer, 0, BLOCK_SIZE);
             var result = WaitResponse();
-            return result.StartsWith("OK");
+            return Encoding.ASCII.GetString(result.ToArray()).StartsWith("OK");
         }
 
         public List<Command> ReadMemory()
@@ -103,26 +104,30 @@ namespace HotKeyPad
             _serialPort.WriteLine("R\n");
             var rawResult = WaitResponse();
 
-            var commands = rawResult.Split("\r\n");
+            var commands =
+                rawResult
+                .Where(s => s != (byte)'\r')
+                .Split(s => s == (byte)'\n')
+                .ToList();
 
             foreach (var command in commands)
             {
-                if (!string.IsNullOrEmpty(command))
+                if (command.Any())
                 {
-                    var blocks = command.Split(":");
+                    var blocks = command.Split(s => s == (byte)':').ToList();
                     result.Add(new Command());
-                    result.Last().Position = int.Parse(blocks[1]);
-                    var commandItens = blocks[2].ToCharArray();
+                    result.Last().Position = blocks[1][0] - 48;
+                    var commandItens = blocks[2];
                     result.Last().Mode = commandItens[0] == '1' ? CommandMode.Sequence : CommandMode.Hold;
-                    result.Last().HoldTime = commandItens[1] != 0 ? commandItens[1] : '0';
-                    result.Last().DelayTime = commandItens[2] != 0 ? commandItens[2] : '0';
+                    result.Last().HoldTime = commandItens[1] != 0 ? commandItens[1] : (byte)'0';
+                    result.Last().DelayTime = commandItens[2] != 0 ? commandItens[2] : (byte)'0';
                     result.Last().Ctrl = commandItens[3] == '1';
                     result.Last().Alt = commandItens[4] == '1';
                     result.Last().Shift = commandItens[5] == '1';
                     result.Last().Gui = commandItens[6] == '1';
 
-                    result.Last().Keys = new List<char>();
-                    for (int i = 7; i < commandItens.Length - 1; i++)
+                    result.Last().Keys = new List<byte>();
+                    for (int i = 7; i < commandItens.Count - 1; i++)
                     {
                         result.Last().Keys.Add(commandItens[i]);
                     }
@@ -139,7 +144,7 @@ namespace HotKeyPad
             _serialPort.DiscardInBuffer();
             _serialPort.WriteLine("C\n");
             var result = WaitResponse();
-            return result.StartsWith("OK");
+            return Encoding.ASCII.GetString(result.ToArray()).StartsWith("OK");
         }
 
         public List<Preset> LoadPresets()
@@ -178,15 +183,20 @@ namespace HotKeyPad
             }
         }
 
-        private string WaitResponse()
+        private List<byte> WaitResponse()
         {
             int timeoutCount = 0;
             do
             {
-                var result = _serialPort.ReadExisting();
-                if (!string.IsNullOrEmpty(result))
+                if (_serialPort.BytesToRead > 0)
                 {
-                    return result;
+                    List<byte> buffer = new List<byte>();
+                    do
+                    {
+                        buffer.Add((byte)_serialPort.ReadByte());
+                    } while (_serialPort.BytesToRead > 0);
+
+                    return buffer;
                 }
 
                 Thread.Sleep(100);
