@@ -132,3 +132,28 @@ Arduino **Mega32U4** based.
 # Prototype
 
 ![Prototype](./docs/prototype.jpg)
+
+# Material List
+
+* Arduino Pro Micro (Mega32U4):
+    - [Aliexpress: Arduino pro micro](https://www.aliexpress.com/item/32768308647.html?spm=a2g0o.productlist.0.0.584e3d9cWliRfZ&algo_pvid=c722e747-26a3-49e2-afd4-e220511a7892&algo_exp_id=c722e747-26a3-49e2-afd4-e220511a7892-2);
+
+* Keypad:
+    - Can be of any kind, or with some soldering skills you can use mechanical keyboard switchs;
+    - [Aliexpress: Analog 3x4 (used in prototype)](https://www.aliexpress.com/item/32530917534.html?spm=a2g0o.productlist.0.0.7a2e1e4fZLk4zU&algo_pvid=089e3f0b-51f5-4673-a60b-f02351a88083&algo_expid=089e3f0b-51f5-4673-a60b-f02351a88083-0&btsid=0bb0623016229992338743771ed8c9&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_);
+    - [Aliexpress: mechanical switchs](https://www.aliexpress.com/item/1005002378701948.html?spm=a2g0o.productlist.0.0.17e010adTwZpnx&algo_pvid=da7808a6-04c2-4aa8-a41c-ff56153d7e6f&algo_expid=da7808a6-04c2-4aa8-a41c-ff56153d7e6f-0&btsid=0bb0623616229993012782836eb185&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_);
+    - [Aliexpress: Relegendable Keycaps](https://www.aliexpress.com/item/1005002171105527.html?spm=a2g0o.productlist.0.0.79ef160fthKaL3&algo_pvid=59d52704-1154-4733-ac34-0ea53cf3905d&algo_expid=59d52704-1154-4733-ac34-0ea53cf3905d-0&btsid=0bb0622a16229994342255026e3a70&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_);
+* Optional vibration motor (Vibration cell)
+    - [Aliexpress: Vibration motor](https://www.aliexpress.com/item/4000245243914.html?spm=a2g0o.productlist.0.0.50ca6715Jp9xJQ&algo_pvid=65b91bdc-a197-45af-b564-9d80d74e4d44&algo_expid=65b91bdc-a197-45af-b564-9d80d74e4d44-0&btsid=0bb0624616230005577812347ee05e&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_);
+* PCB
+    - In the example I used prototype PCB, but you can make your own;
+    - [Aliexpres: Prototype PCB](https://www.aliexpress.com/item/1005001831068240.html?spm=a2g0o.productlist.0.0.483a6179YYsnEB&algo_pvid=89ead694-f24e-49f8-b531-ca1dbd0af9ac&algo_expid=89ead694-f24e-49f8-b531-ca1dbd0af9ac-3&btsid=0b0a556716229995408883983ecf8d&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_);
+* 3 pin female PCB connector
+    - [Aliexpress: Female PCB connector](https://www.aliexpress.com/item/1005001418544370.html?spm=a2g0o.productlist.0.0.53687b2c1CkCwm&algo_pvid=dabec45c-04e2-40fb-8ba4-85399c836454&algo_expid=dabec45c-04e2-40fb-8ba4-85399c836454-2&btsid=0bb0620316230002921274618ee6de&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_);
+* Wires for assembly;
+* Soldering wire;
+* Micro USB cable;
+* Some bolts and spacers;
+    - [Aliexpress: Spacers](https://www.aliexpress.com/item/1005001478740318.html?spm=a2g0o.productlist.0.0.7a457875FoioVL&algo_pvid=d4bb172d-160d-4e27-8675-bf1fb2f82e7c&algo_expid=d4bb172d-160d-4e27-8675-bf1fb2f82e7c-6&btsid=0b0a556516229997939638409e3bb3&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_);
+* A good soldering iron;
+* Patience;
