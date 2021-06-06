@@ -8,7 +8,7 @@ Arduino **Mega32U4** based.
 
 # Base Circuit
 
-![Logo](./docs/BaseCircuit.png)
+![Circuit](./docs/BaseCircuit.png)
 
 * Vibration cell optional.
 * Keyboard can be of any kind, only need to update '*readButton*' method on Arduino code (*\Arduino\HotKeyPad\HotKeyPad.ino*)
@@ -100,7 +100,7 @@ Arduino **Mega32U4** based.
 
 # Program
 
-![Logo](./docs/Program.png)
+![Program](./docs/Program.png)
 
 1. This field indicates the connected device and the port;
 2. Presets:
@@ -122,3 +122,13 @@ Arduino **Mega32U4** based.
         - Clear device memory;
         - Reload commands from the connected device;
         - Minimize to tray;
+
+# Presets
+
+* Presets are saved on `<Your Document Folder>\HotKeyPad` on '*json*' format.
+* You can export presets copying them from this folder.
+* You can import presets adding them to this folder.
+
+# Prototype
+
+![Prototype](./docs/prototype.jpg)
