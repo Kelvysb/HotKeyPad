@@ -133,6 +133,14 @@ Arduino **Mega32U4** based.
 
 ![Prototype](./docs/prototype.jpg)
 
+# Casing (3D printed)
+
+[Model on Thingiverse](https://www.thingiverse.com/thing:5168905)
+
+![3D printed Casing](./docs/Proto4.jpeg)
+![3D printed Casing](./docs/Proto5.jpeg)
+![3D printed Casing](./docs/Proto3.jpeg)
+
 # Material List
 
 * Arduino Pro Micro (Mega32U4):
