@@ -15,6 +15,7 @@ namespace HotKeyPad
         private Dictionary<string, byte> especialKeys;
         private Command selectedButton = null;
         private Preset selectedPreset = null;
+        private int selectedPosition = -1;
 
         public HotKeyPad()
         {
@@ -34,7 +35,6 @@ namespace HotKeyPad
                 LoadPresets();
                 SelectButton(1);
                 MarkButton(button1);
-                Minimize(true);
             }
             catch (Exception ex)
             {
@@ -351,8 +351,10 @@ namespace HotKeyPad
         private void SelectButton(int button)
         {
             selectedButton = null;
+            selectedPosition = -1;
             if (button > 0 && button <= 12)
             {
+                selectedPosition = button;
                 selectedButton = commands[button - 1];
                 LblSelectedButton.Text = (selectedButton.Position + 1).ToString();
                 RadHold.Checked = selectedButton.Mode == CommandMode.Hold;

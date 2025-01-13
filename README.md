@@ -129,17 +129,25 @@ Arduino **Mega32U4** based.
 * You can export presets copying them from this folder.
 * You can import presets adding them to this folder.
 
-# Prototype
+# Casing (3D printed) Version 2.0 - Using switches
 
-![Prototype](./docs/prototype.jpg)
+[Model on Thingiverse](https://www.thingiverse.com/thing:5168905)
 
-# Casing (3D printed)
+![3D printed Casing](./docs/HotKeys1.jpg)
+![3D printed Casing](./docs/HotKeys3.jpg)
+![3D printed Casing](./docs/HotKeys4.jpg)
+
+# Casing (3D printed) Version 1.0 - Using resistive 3x4 Keypad
 
 [Model on Thingiverse](https://www.thingiverse.com/thing:5168905)
 
 ![3D printed Casing](./docs/Proto4.jpeg)
 ![3D printed Casing](./docs/Proto5.jpeg)
 ![3D printed Casing](./docs/Proto3.jpeg)
+
+# Prototype
+
+![Prototype](./docs/prototype.jpg)
 
 # Material List
 

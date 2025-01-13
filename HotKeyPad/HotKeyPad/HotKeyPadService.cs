@@ -91,7 +91,8 @@ namespace HotKeyPad
             _serialPort.DiscardInBuffer();
             _serialPort.Write(buffer, 0, BLOCK_SIZE);
             var result = WaitResponse();
-            return Encoding.ASCII.GetString(result.ToArray()).StartsWith("OK");
+            var resultText = Encoding.ASCII.GetString(result.ToArray());
+            return resultText.StartsWith("OK");
         }
 
         public List<Command> ReadMemory()
@@ -116,7 +117,10 @@ namespace HotKeyPad
                 {
                     var blocks = command.Split(s => s == (byte)':').ToList();
                     result.Add(new Command());
-                    result.Last().Position = blocks[1][0] - 48;
+                    if(blocks[1].Count == 1)
+                        result.Last().Position = blocks[1][0] - 48;
+                    else
+                        result.Last().Position = (blocks[1][1] + 10) - 48;
                     var commandItens = blocks[2];
                     result.Last().Mode = commandItens[0] == '1' ? CommandMode.Sequence : CommandMode.Hold;
                     result.Last().HoldTime = commandItens[1] != 0 ? commandItens[1] : (byte)'0';
