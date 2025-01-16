@@ -134,8 +134,8 @@ Arduino **Mega32U4** based.
 
 [Model on Thingiverse](https://www.thingiverse.com/thing:6915041)
 
-![3D printed Casing](./docs/HotKeys6.jpg)
 ![3D printed Casing](./docs/HotKeys7.jpg)
+![3D printed Casing](./docs/HotKeys6.jpg)
 ![3D printed Casing](./docs/HotKeys1.jpg)
 ![3D printed Casing](./docs/HotKeys3.jpg)
 ![3D printed Casing](./docs/HotKeys4.jpg)
