@@ -158,7 +158,8 @@ Arduino **Mega32U4** based.
   
   - 12 keyboard switchs;
   - 12 Keycaps (can be printed, files included)
-  - 12 3mm leds 
+  - 12 3mm leds
+  - 24 Stamped contacts (removed from commom stamped IC sockets)
 
 - Wires for assembly;
 
