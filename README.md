@@ -185,7 +185,7 @@ Arduino **Mega32U4** based.
 
 # Base Circuit 1.0
 
-![](C:\Users\Kelvy\source\repos\HotKeyPad\docs\BaseCircuit.png)
+![](https://github.com/Kelvysb/HotKeyPad/blob/main/docs/BaseCircuit.png?raw=true)
 
 - Vibration cell optional.
 - Keyboard can be of any kind, only need to update '*readButton*' method on Arduino code (*\Arduino\HotKeyPad\HotKeyPad.ino*)
