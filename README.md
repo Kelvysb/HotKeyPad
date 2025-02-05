@@ -146,7 +146,7 @@ Arduino **Mega32U4** based.
 
 
 
-![](C:\Users\Kelvy\source\repos\HotKeyPad\docs\BaseCircuit_2.png)
+![](https://github.com/Kelvysb/HotKeyPad/blob/main/docs/BaseCircuit_2.png?raw=true)
 
 
 
